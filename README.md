@@ -1,9 +1,9 @@
 ## Fetchmail GnuPG Web Key Directory Service
 
 This repository holds the working configuration for my multi-domain Gnupg Web
-Key Directory install.
+Key Directory service install.
 
-This install runs `fetchmail` against external POP & SMTP servers, checking at
+This service runs `fetchmail` against external POP & SMTP servers, checking at
 a prescribed interval.
 
 ## How it works
@@ -24,13 +24,13 @@ First we need to install the needed software.
 Then install the config.
 
     mkdir -p /var/lib/gnupg
-    git clone git@git.mattrude.com:secure/gnupg-wks-config.git /var/lib/gnupg/wks
+    git clone git@github.com:mattrude/gnupg-directory-service.git /var/lib/gnupg/wks
 
 Run the install script.
 
     /var/lib/gnupg/wks/wks-maintance-script.sh
 
-Confirm fetchmail is running
+After the script has finised, confirm fetchmail is running
 
     ps aux |grep fetchmail |grep -v grep
 
@@ -42,7 +42,7 @@ Update Cron.
 ## Adding a new Domain
 
 At this point, adding a new domain consists of adding a new, domain specific,
-section to the already existing `fetchmail.conf` file, `/var/lib/gnupg/wks/etc`
+section to the already existing `fetchmail.conf` file, in the `/var/lib/gnupg/wks/etc`
 directory.  Then you must create new `procmail-example.com.conf` and
 `ssmtp-example.com.conf` in the same directory so each file can find them.
 
