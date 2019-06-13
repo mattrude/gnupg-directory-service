@@ -1,0 +1,11 @@
+/var/lib/gnupg/wks/logs/*.log {
+  rotate 12
+  weekly
+  compress
+  missingok
+  delaycompress
+  notifempty
+  postrotate
+      killall fetchmail >/dev/null 2>&1
+  endscript
+}
